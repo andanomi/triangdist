@@ -15,3 +15,20 @@ resultado <- ifelse(x < a | x > b) {resultado = 0}
             }
   return(resultado)
 }
+
+
+ptriang <- function(q,a,b,mode) {
+  if (q < a) {
+    res = 0
+  }
+  if (q > b) {
+    res = 1
+  }
+  if (a < q < c) {
+    res = ((q-a)^2) / ((b-a)*(c-a))
+  }
+  if (c < q < b ) {
+    res = 1 - ((b-q)^2) / ((b-a)*(b-c))
+  }
+  return(res)
+}
