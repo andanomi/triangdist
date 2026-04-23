@@ -18,17 +18,13 @@ resultado <- ifelse(x < a | x > b) {resultado = 0}
 
 
 ptriang <- function(q,a,b,c) {
-  if (q < a) {
-    res = 0
-  }
-  if (q > b) {
-    res = 1
-  }
-  if (a < q < c) {
-    res = ((q-a)^2) / ((b-a)*(c-a))
-  }
-  if (c < q < b ) {
-    res = 1 - ((b-q)^2) / ((b-a)*(b-c))
-  }
+  res <- ifelse(q <= a,0,
+                ifelse(q >= b, 1,
+                       ifelse(q <= c,
+                              ((q-a)^2) / ((b-a)*(c-a)),
+                              1 - ((b-q)^2) / ((b-a)*(b-c))
+                       )
+                )
+  )
   return(res)
 }
