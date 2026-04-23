@@ -1,4 +1,4 @@
-dtriang <- function(x,a,b,mode) {
+dtriang <- function(x,a,b,c) {
 if (any(a > b, na.rm =T)) {
   stop("Error: 'min' no puede ser mayor que 'max'")
 }
@@ -17,7 +17,7 @@ resultado <- ifelse(x < a | x > b) {resultado = 0}
 }
 
 
-ptriang <- function(q,a,b,mode) {
+ptriang <- function(q,a,b,c) {
   if (q < a) {
     res = 0
   }
