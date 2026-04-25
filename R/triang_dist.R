@@ -1,3 +1,14 @@
+#' Triangular Distribution Density
+#'
+#' Computes the probability density function (PDF) of the triangular distribution.
+#'
+#' @param x A numeric vector of quantiles.
+#' @param min The lower limit of the distribution.
+#' @param max The upper limit of the distribution.
+#' @param mode The mode (peak) of the distribution.
+#' @return A numeric vector containing the density values
+#' @export
+
 dtriang <- function(x,min,max,mode) {
 if (any(min > max, na.rm =T)) {
   stop("Error: 'min' no puede ser mayor que 'max'")
@@ -17,6 +28,16 @@ resultado <- ifelse(x < min | x > max,0,
   return(resultado)
 }
 
+#' Cumulative Distribution
+#'
+#' Computes the cumulative probability (CDF) of the triangular distribution.
+#'
+#' @param q A numeric vector of quantiles.
+#' @param min The lower limit of the distribution.
+#' @param max The upper limit of the distribution.
+#' @param mode The mode (peak) of the distribution.
+#' @return A numeric vector containing the cumulative probability.
+#' @export
 
 ptriang <- function(q,min,max,mode) {
   if (any(min > max, na.rm =T)) {
@@ -38,6 +59,17 @@ ptriang <- function(q,min,max,mode) {
   return(res)
 }
 
+#' Triangular Distribution Quantiles
+#'
+#' Computes the quantile function (inverse CDF) of the triangular distribution.
+#'
+#' @param p A numeric vector of probabilities.
+#' @param min The lower limit of the distribution.
+#' @param max The upper limit of the distribution.
+#' @param mode The mode (peak) of the distribution.
+#' @return A numeric vector containing the corresponding quantiles.
+#' @export
+
 qtriang <- function(p,min,max,mode) {
   if (any(min > max, na.rm =T)) {
     stop("Error: 'min' no puede ser mayor que 'max'")
@@ -54,6 +86,17 @@ qtriang <- function(p,min,max,mode) {
                 max - sqrt((1-p)*(max-min)*(max-mode)))
   return(res)
 }
+
+#' Triangular Distribution Random Generation
+#'
+#' Computes random deviates of the triangular distribution.
+#'
+#' @param n Number of observations.
+#' @param min The lower limit of the distribution.
+#' @param max The upper limit of the distribution.
+#' @param mode The mode (peak) of the distribution.
+#' @return A numeric vector of random generated values.
+#' @export
 
 rtriang <- function(n,min,max,mode){
   if (any(min > max, na.rm =T)) {
