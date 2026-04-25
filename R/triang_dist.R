@@ -38,9 +38,6 @@ ptriang <- function(q,min,max,mode) {
   return(res)
 }
 
-dtriang(c(1,4,8,10),0,10,5)
-ptriang(c(1,4,8,10),0,10,3)
-
 qtriang <- function(p,min,max,mode) {
   if (any(min > max, na.rm =T)) {
     stop("Error: 'min' no puede ser mayor que 'max'")
@@ -57,7 +54,6 @@ qtriang <- function(p,min,max,mode) {
                 max - sqrt((1-p)*(max-min)*(max-mode)))
   return(res)
 }
-qtriang(100,0,10,5)
 
 rtriang <- function(n,min,max,mode){
   if (any(min > max, na.rm =T)) {
@@ -72,8 +68,3 @@ rtriang <- function(n,min,max,mode){
   res <- qtriang(u,min,max,mode)
   return(res)
 }
-
-puntos <- rtriang(100000,0,10,5)
-
-hist(puntos,breaks=100,freq=F,col="lightblue")
-curve(dtriang(x,0,10,5),add=T,col='red',lwd=2)
