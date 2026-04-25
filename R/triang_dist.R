@@ -1,16 +1,16 @@
-dtriang <- function(x,a,b,c) {
-if (any(a > b, na.rm =T)) {
+dtriang <- function(x,min,max,mode) {
+if (any(min > max, na.rm =T)) {
   stop("Error: 'min' no puede ser mayor que 'max'")
 }
 
-if (any(c < a | c > b, na.rm = T)) {
+if (any(mode < min | mode > max, na.rm = T)) {
   stop("Error: 'mode' no puede estar fuera de '[min,max]'")
 }
 
-resultado <- ifelse(x < a | x > b,0,
-                    ifelse(a <= x & x <=c,
-                           (2*(x-a)) / ((b-a)*(c-a)),
-                                        (2*(b-x)) / ((b-a)*(b-c))
+resultado <- ifelse(x < min | x > max,0,
+                    ifelse(min <= x & x <=mode,
+                           (2*(x-min)) / ((max-min)*(mode-min)),
+                                        (2*(max-x)) / ((max-min)*(max-mode))
                           )
                     )
 
@@ -18,12 +18,20 @@ resultado <- ifelse(x < a | x > b,0,
 }
 
 
-ptriang <- function(q,a,b,c) {
-  res <- ifelse(q <= a,0,
-                ifelse(q >= b, 1,
-                       ifelse(q <= c,
-                              ((q-a)^2) / ((b-a)*(c-a)),
-                              1 - ((b-q)^2) / ((b-a)*(b-c))
+ptriang <- function(q,min,max,mode) {
+  if (any(min > max, na.rm =T)) {
+    stop("Error: 'min' no puede ser mayor que 'max'")
+  }
+
+  if (any(mode < min | mode > max, na.rm = T)) {
+    stop("Error: 'mode' no puede estar fuera de '[min,max]'")
+  }
+
+  res <- ifelse(q <= min,0,
+                ifelse(q >= max, 1,
+                       ifelse(q <= mode,
+                              ((q-min)^2) / ((max-min)*(mode-min)),
+                              1 - ((max-q)^2) / ((max-min)*(max-mode))
                        )
                 )
   )
@@ -32,3 +40,21 @@ ptriang <- function(q,a,b,c) {
 
 dtriang(c(1,4,8,10),0,10,5)
 ptriang(c(1,4,8,10),0,10,3)
+
+qtriang <- function(p,min,max,mode) {
+  if (any(min > max, na.rm =T)) {
+    stop("Error: 'min' no puede ser mayor que 'max'")
+  }
+
+  if (any(mode < min | mode > max, na.rm = T)) {
+    stop("Error: 'mode' no puede estar fuera de '[min,max]'")
+  }
+  if (any(p < 0 | p > 1,na.rm = T)){
+    stop("Error: 'p' debe estar estrictamente en el intervalo [0,1] ")
+  }
+  res <- ifelse(p <= (mode-min) / (max-min),
+                sqrt(p *(max-min)*(mode-min)) + min,
+                max - sqrt((1-p)*(max-min)*(max-mode)))
+  return(res)
+}
+qtriang(100,0,10,5)
