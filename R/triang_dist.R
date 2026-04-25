@@ -58,3 +58,22 @@ qtriang <- function(p,min,max,mode) {
   return(res)
 }
 qtriang(100,0,10,5)
+
+rtriang <- function(n,min,max,mode){
+  if (any(min > max, na.rm =T)) {
+    stop("Error: 'min' no puede ser mayor que 'max'")
+  }
+
+  if (any(mode < min | mode > max, na.rm = T)) {
+    stop("Error: 'mode' no puede estar fuera de '[min,max]'")
+  }
+
+  u <- runif(n)
+  res <- qtriang(u,min,max,mode)
+  return(res)
+}
+
+puntos <- rtriang(100000,0,10,5)
+
+hist(puntos,breaks=100,freq=F,col="lightblue")
+curve(dtriang(x,0,10,5),add=T,col='red',lwd=2)
