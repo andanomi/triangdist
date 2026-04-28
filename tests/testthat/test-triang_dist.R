@@ -1,26 +1,26 @@
 test_that("parámteros ilógicos", {
-  expect_error(dtriang(5,10,0,5))
-  expect_error(ptriang(5,10,0,5))
+  expect_error(dtriang(5, 10, 0, 5))
+  expect_error(ptriang(5, 10, 0, 5))
 
-  expect_error(qtriang(0.5,10,0,5))
-  expect_error(rtriang(5,10,0,5))
+  expect_error(qtriang(0.5, 10, 0, 5))
+  expect_error(rtriang(5, 10, 0, 5))
 
-  expect_error(dtriang(5,0,10,-2))
-  expect_error(ptriang(5,0,10,-2))
+  expect_error(dtriang(5, 0, 10, -2))
+  expect_error(ptriang(5, 0, 10, -2))
 
-  expect_error(qtriang(0.5,0,10,-2))
-  expect_error(rtriang(5,0,10,-2))
+  expect_error(qtriang(0.5, 0, 10, -2))
+  expect_error(rtriang(5, 0, 10, -2))
 
-  expect_error(dtriang(5,0,10,15))
-  expect_error(ptriang(5,0,10,15))
+  expect_error(dtriang(5, 0, 10, 15))
+  expect_error(ptriang(5, 0, 10, 15))
 
-  expect_error(qtriang(0.5,0,10,15))
-  expect_error(rtriang(5,0,10,15))
+  expect_error(qtriang(0.5, 0, 10, 15))
+  expect_error(rtriang(5, 0, 10, 15))
 })
 
 test_that("probabilidades imposibles", {
-  expect_error(qtriang(-100,0,10,5))
-  expect_error(qtriang(100,0,10,5))
+  expect_error(qtriang(-100, 0, 10, 5))
+  expect_error(qtriang(100, 0, 10, 5))
 })
 
 test_that("dtriang calcula densidades físicas exactas", {
@@ -37,7 +37,7 @@ test_that("ptriang barre el área de probabilidad correctamente", {
   expect_equal(ptriang(-1, 0, 10, 5), 0)
   # Después del final está todo el área (1)
   expect_equal(ptriang(15, 0, 10, 5), 1)
-  # En una distribución simétrica perfecta, la moda divide el área a la mitad (0.5)
+  # En una distribución simétrica perfecta
   expect_equal(ptriang(5, 0, 10, 5), 0.5)
 })
 

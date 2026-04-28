@@ -19,5 +19,5 @@ dtriang(x, min, max, mode)
 A numeric vector containing the density values
 }
 \description{
-Computes the probability density function (PDF) of the triangular distribution.
+Computes the probability density function (PDF) of triangular distribution.
 }
