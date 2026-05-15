@@ -7,6 +7,10 @@
 #' @param max The upper limit of the distribution.
 #' @param mode The mode (peak) of the distribution.
 #' @return A numeric vector containing the density values
+#' @examples
+#' dtriang(0.5, 0, 1, 0.5)
+#' dtriang(c(0.2, 0.5, 0.8), 0, 1, 0.5)
+#' dtriang(-1, 0, 1, 0.5)  # fuera de rango, devuelve 0
 #' @export
 dtriang <- function(x, min, max, mode) {
   if (any(min > max, na.rm = TRUE)) {
@@ -33,6 +37,11 @@ dtriang <- function(x, min, max, mode) {
 #' @param max The upper limit of the distribution.
 #' @param mode The mode (peak) of the distribution.
 #' @return A numeric vector containing the cumulative probability.
+#' @examples
+#' ptriang(0.5, 0, 1, 0.5)
+#' ptriang(c(0.2, 0.5, 0.8), 0, 1, 0.5)
+#' ptriang(0, 0, 1, 0.5)   # en el límite inferior, devuelve 0
+#' ptriang(1, 0, 1, 0.5)   # en el límite superior, devuelve 1
 #' @export
 ptriang <- function(q, min, max, mode) {
   if (any(min > max, na.rm = TRUE)) {
@@ -66,6 +75,11 @@ ptriang <- function(q, min, max, mode) {
 #' @param max The upper limit of the distribution.
 #' @param mode The mode (peak) of the distribution.
 #' @return A numeric vector containing the corresponding quantiles.
+#' @examples
+#' ptriang(0.5, 0, 1, 0.5)
+#' ptriang(c(0.2, 0.5, 0.8), 0, 1, 0.5)
+#' ptriang(0, 0, 1, 0.5)   # en el límite inferior, devuelve 0
+#' ptriang(1, 0, 1, 0.5)   # en el límite superior, devuelve 1
 #' @export
 qtriang <- function(p, min, max, mode) {
   if (any(min > max, na.rm = TRUE)) {
@@ -97,6 +111,10 @@ qtriang <- function(p, min, max, mode) {
 #' @param max The upper limit of the distribution.
 #' @param mode The mode (peak) of the distribution.
 #' @return A numeric vector of random generated values.
+#' @examples
+#' rtriang(10, 0, 1, 0.5)
+#' set.seed(42)
+#' rtriang(5, 0, 1, 0.5)
 #' @importFrom stats runif
 #' @export
 rtriang <- function(n, min, max, mode) {
