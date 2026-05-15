@@ -21,3 +21,8 @@ A numeric vector containing the density values
 \description{
 Computes the probability density function (PDF) of triangular distribution.
 }
+\examples{
+dtriang(0.5, 0, 1, 0.5)
+dtriang(c(0.2, 0.5, 0.8), 0, 1, 0.5)
+dtriang(-1, 0, 1, 0.5)  # fuera de rango, devuelve 0
+}

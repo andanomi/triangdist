@@ -21,3 +21,8 @@ A numeric vector of random generated values.
 \description{
 Computes random deviates of the triangular distribution.
 }
+\examples{
+rtriang(10, 0, 1, 0.5)
+set.seed(42)
+rtriang(5, 0, 1, 0.5)
+}

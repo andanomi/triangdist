@@ -21,3 +21,9 @@ A numeric vector containing the cumulative probability.
 \description{
 Computes the cumulative probability (CDF) of the triangular distribution.
 }
+\examples{
+ptriang(0.5, 0, 1, 0.5)
+ptriang(c(0.2, 0.5, 0.8), 0, 1, 0.5)
+ptriang(0, 0, 1, 0.5)   # en el límite inferior, devuelve 0
+ptriang(1, 0, 1, 0.5)   # en el límite superior, devuelve 1
+}
